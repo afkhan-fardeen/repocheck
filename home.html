@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RepoHealth - Codebase Health Analysis</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#0a0f14",
+                        "surface-dark": "#111a22",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "mono": ["JetBrains Mono", "monospace"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .grid-pattern {
+            background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.05) 1px, transparent 0);
+            background-size: 32px 32px;
+        }
+        .soft-glow {
+            background: radial-gradient(circle at center, rgba(19, 127, 236, 0.15) 0%, transparent 70%);
+        }
+    </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<!-- Top Navigation -->
+<header class="fixed top-0 w-full z-50 border-b border-slate-200 dark:border-slate-800 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-16">
+<div class="flex items-center gap-2">
+<div class="bg-primary p-1.5 rounded-lg">
+<span class="material-symbols-outlined text-white text-xl">rocket_launch</span>
+</div>
+<span class="text-xl font-bold tracking-tight">RepoHealth</span>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Documentation</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Enterprise</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Pricing</a>
+<div class="h-4 w-[1px] bg-slate-200 dark:bg-slate-800 mx-2"></div>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Sign In</a>
+<button class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg text-sm font-bold transition-all shadow-lg shadow-primary/20">
+                        Get Started
+                    </button>
+</nav>
+<div class="md:hidden">
+<span class="material-symbols-outlined">menu</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Hero Section -->
+<main class="relative pt-32 pb-20 overflow-hidden">
+<!-- Background Elements -->
+<div class="absolute inset-0 grid-pattern pointer-events-none"></div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full soft-glow pointer-events-none"></div>
+<div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+<!-- Badge -->
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold tracking-wider uppercase mb-8">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+</span>
+                Now supporting GitHub Actions Analysis
+            </div>
+<!-- Headline -->
+<h1 class="text-5xl md:text-7xl font-black tracking-tight mb-6 bg-gradient-to-b from-slate-900 to-slate-600 dark:from-white dark:to-slate-400 bg-clip-text text-transparent leading-[1.1]">
+                Know your codebase health.
+            </h1>
+<!-- Subtitle -->
+<p class="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-12 leading-relaxed">
+                Instant analysis of maintainability, technical debt, and contributor risk. 
+                Get actionable insights for your engineering team in seconds.
+            </p>
+<!-- Input Group -->
+<div class="max-w-2xl mx-auto mb-12">
+<div class="flex flex-col sm:flex-row gap-3 p-2 rounded-xl bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-800 shadow-2xl shadow-primary/5 focus-within:ring-2 focus-within:ring-primary/40 transition-all group">
+<div class="flex-1 flex items-center px-4 gap-3">
+<span class="material-symbols-outlined text-slate-400 group-focus-within:text-primary transition-colors">link</span>
+<input class="w-full bg-transparent border-none focus:ring-0 text-slate-900 dark:text-white font-mono placeholder:text-slate-400 dark:placeholder:text-slate-600" placeholder="github.com/username/repository" type="text"/>
+</div>
+<button class="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-lg font-bold transition-all flex items-center justify-center gap-2 shadow-lg shadow-primary/25">
+<span class="material-symbols-outlined">analytics</span>
+                        Check Health
+                    </button>
+</div>
+</div>
+<!-- Meta Info / Tags -->
+<div class="flex flex-wrap justify-center items-center gap-6 text-slate-500 dark:text-slate-500 text-sm font-medium">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-green-500 text-lg">check_circle</span>
+                    Public Repos
+                </div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-blue-500 text-lg">lock</span>
+                    Private Repos
+                </div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-purple-500 text-lg">history</span>
+                    Historical Analysis
+                </div>
+</div>
+</div>
+<!-- Trust Section -->
+<div class="mt-24 border-t border-slate-200 dark:border-slate-800 pt-12">
+<p class="text-center text-xs font-bold uppercase tracking-[0.2em] text-slate-400 dark:text-slate-600 mb-8">
+                Trusted by engineering teams at
+            </p>
+<div class="max-w-7xl mx-auto px-4 overflow-hidden">
+<div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+<div class="h-8 w-32 bg-slate-300 dark:bg-slate-700 rounded-lg flex items-center justify-center">
+<span class="text-xs font-mono">NEXT_TECH</span>
+</div>
+<div class="h-8 w-32 bg-slate-300 dark:bg-slate-700 rounded-lg flex items-center justify-center">
+<span class="text-xs font-mono">CLOUD_CORE</span>
+</div>
+<div class="h-8 w-32 bg-slate-300 dark:bg-slate-700 rounded-lg flex items-center justify-center">
+<span class="text-xs font-mono">DEV_FLOW</span>
+</div>
+<div class="h-8 w-32 bg-slate-300 dark:bg-slate-700 rounded-lg flex items-center justify-center">
+<span class="text-xs font-mono">SAFE_DEPLOY</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Feature Preview (Contextual Background) -->
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<div class="relative rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-surface-dark/50 backdrop-blur-sm p-4 md:p-8">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="space-y-4">
+<div class="h-2 w-12 bg-primary rounded-full"></div>
+<h3 class="text-lg font-bold">Risk Assessment</h3>
+<div class="space-y-2">
+<div class="h-4 w-full bg-slate-200 dark:bg-slate-800 rounded"></div>
+<div class="h-4 w-2/3 bg-slate-200 dark:bg-slate-800 rounded"></div>
+</div>
+</div>
+<div class="space-y-4">
+<div class="h-2 w-12 bg-green-500 rounded-full"></div>
+<h3 class="text-lg font-bold">Maintainability</h3>
+<div class="space-y-2">
+<div class="h-4 w-full bg-slate-200 dark:bg-slate-800 rounded"></div>
+<div class="h-4 w-3/4 bg-slate-200 dark:bg-slate-800 rounded"></div>
+</div>
+</div>
+<div class="space-y-4">
+<div class="h-2 w-12 bg-purple-500 rounded-full"></div>
+<h3 class="text-lg font-bold">Technical Debt</h3>
+<div class="space-y-2">
+<div class="h-4 w-full bg-slate-200 dark:bg-slate-800 rounded"></div>
+<div class="h-4 w-1/2 bg-slate-200 dark:bg-slate-800 rounded"></div>
+</div>
+</div>
+</div>
+<!-- Subtle Image Overlay to hint at dashboard -->
+<div class="mt-8 relative h-64 w-full rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-inner">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-purple-500/5"></div>
+<img class="w-full h-full object-cover opacity-40 mix-blend-overlay" data-alt="Modern dashboard showing repository health metrics and charts" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmRcfVDI6paxxZxU_tDFCy59xhbUxHkqOf9Kr12TtOEaupm0KJGxCjJ8tzv9ZJyIWplKPSWI1OE-iCQ4JoB5sOrHTOvoO-AD5c0iFd9CS0frM8Ow0wt7NfTl0kXs3rokwD865dcxM45V432bo37HzA8Jf6gW7owANngzyHI9MEN9CWcDWOJwxon7H08FkhfbHYRS7TcfIQORUUdMFI4PM7vFrc042jOgbFXoQUbkoQL_cfBcyg5aB2b2vSd0WnknLJEYeqDY_37Z65"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="bg-background-dark/80 backdrop-blur px-6 py-3 rounded-full border border-white/10 text-white font-medium flex items-center gap-2">
+<span class="material-symbols-outlined">visibility</span>
+                        Preview Analysis Report
+                    </div>
+</div>
+</div>
+</div>
+</section>
+</body></html>
