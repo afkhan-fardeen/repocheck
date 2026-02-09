@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { ScoreBreakdown } from '@/types/report'
+import type { ScoreBreakdown } from '@/types/report'
 
 interface ScoreBreakdownProps {
   breakdown: ScoreBreakdown
